@@ -2,7 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 줌(확대)을 막기 위한 viewport 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <!-- 기본 탭 타이틀: "집중 근무 모드" -->
   <title>집중 근무 모드</title>
   <!-- 파비콘 (원하는 아이콘 파일 사용) -->
@@ -107,11 +108,13 @@
       color: #cccccc;
       transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
     }
-    /* hover 상태일 때만 효과 적용 */
-    .controls button:hover {
-      background: #555555;
-      transform: scale(1.03);
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* hover 효과: hover를 지원하는 장치에서만 적용 */
+    @media (hover: hover) and (pointer: fine) {
+      .controls button:hover {
+        background: #555555;
+        transform: scale(1.03);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      }
     }
     /* 작업 내역 영역 */
     #logContainer {
